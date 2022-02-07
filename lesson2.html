@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue3.js"></script>
+</head>
+
+<body>
+    <div id='a'>
+        <span v-once>
+            {{get}}
+        </span>
+        <div>
+            {{html}}
+        </div>
+        <div v-html="html">
+            999
+        </div>
+        <button v-on:click='a'>button</button>
+    </div>
+    
+     <script>
+         Vue.createApp({
+             data:function(){
+                 return{
+                     content:"hello vue3",
+                     abc:"abc",
+                     num:0,
+                     get:"一次",
+                     html:"<div>123</div>"
+                 }
+             },
+             methods:{
+                 a:function(){
+                     this.get = '10';//v-once锁死控件内容
+                    //console.log(this);
+                    //this.content='good';
+                    //this.abc="lala";
+                    //  var _this = this;
+                    //  setInterval(function(){
+                    //     _this.num++;
+                    //  },1000);
+                 },
+                 b:function(){
+                     alert(2);
+                 }
+             }
+         }).mount("#a");
+
+     </script>
+</body>
+</html>

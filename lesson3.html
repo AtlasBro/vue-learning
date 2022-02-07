@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue3.js"></script>
+    <style>
+        span{transition: .3s;}
+        .red{color:red}
+        .blue{color:blue}
+    </style>
+</head>
+<body>
+    <div id="a">
+        <span>{{name?content:color}}</span>
+        <span v-html="name?span:div"></span>
+        <span v-html="num==1?span:div"></span>        
+        <span v-bind:abc="'blue'+ content">a</span>
+        <span v-bind:class="name?'red':'blue'" v-on:click="change">sky</span>
+        <button v-on:click='toRed'>red</button>
+        <button v-on:click='toBlue'>blue</button>        
+        {{content}}
+        <span v-bind:class="color">123</span>
+        <span v-bind:class="color" v-bind:id="'sky'">color</span> <!--若想将其变为字符串，需要一对单引号和一对双引号-->
+    </div>
+    <script>
+        Vue.createApp({
+            data:function(){
+                return{
+                    num:"1",
+                    content:"123",
+                    color:"red",
+                    name:true,
+                    span:"<span>span</span>",
+                    div:"<div>div</div>"
+                }
+            },
+            methods:{
+                toRed:function(){
+                    this.color='red';
+                },
+                toBlue:function(){
+                    this.color='blue';
+                },
+                change:function(){
+                    this.name = !this.name;//不断true false循环
+                }
+            }
+        }).mount("#a");
+    </script>
+</body>
+</html>
