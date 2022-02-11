@@ -239,3 +239,75 @@
 ```
 
 3.开发时使用缩写形式，增强可读性
+
+# 五.Data Property
+
+### 1.总结
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+    <script src="vue3.js"></script>
+</head>
+<body>
+    <div id="leo">
+        <span @click="go">{{num}}</span>
+    </div>
+
+    <input value="go" type="button" id="ipt" />
+    
+    <div id="sky">
+        <input value="bye" type="button" @click="vmGo"/>
+    </div>
+    
+    <script>
+        Vue.createApp({
+            methods:{
+                vmGo:function(){
+                    wm.go();//外部同样可以调用
+                }
+            }
+        }).mount("#sky");
+
+        var wm = Vue.createApp({
+            data:function(){
+                return{
+                    num:0,
+                    content:"Vue"
+                }
+            },
+            methods:{
+                go:function(){
+                    this.num++;
+                    //alert("1");
+                    //console.log(this.$data);
+                    //this.content="123"
+                }
+            }
+        }).mount("#leo");
+        
+        ipt.onclick = function(){
+            wm.$data.content = 30;
+            wm.go();
+        };//原生js点击事件
+
+        wm.go();//直接调用methods方法go
+
+        // setTimeout(function(){
+        //     wm.$data.content = 20;
+        // },1000);
+
+        //console.log(wm.content);
+    </script>
+</body>
+</html>
+```
+
+![image-20220211210657722](https://gitee.com/kawahara0616/typora-images/raw/master/202202112106852.png)
+
+# 六.条件渲染-指令v-show
