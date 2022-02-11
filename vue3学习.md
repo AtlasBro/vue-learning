@@ -216,3 +216,26 @@
 
 ### ![image-20220211151558426](https://gitee.com/kawahara0616/typora-images/raw/master/202202111516703.png)
 
+# 四.模板语法-缩写
+
+### 1.总结
+
+![image-20220211154051083](https://gitee.com/kawahara0616/typora-images/raw/master/202202111540196.png)
+
+补充：
+
+1.@mouseover就相当于v-on:mouseover，类似的方法同上
+
+2.
+
+![image-20220211153732926](https://gitee.com/kawahara0616/typora-images/raw/master/202202111537971.png)
+
+![image-20220211153751218](https://gitee.com/kawahara0616/typora-images/raw/master/202202111537260.png)
+
+以上写法相当于
+
+```html
+<span v-on:click="change" @mouseover="over">事件</span>
+```
+
+3.开发时使用缩写形式，增强可读性
