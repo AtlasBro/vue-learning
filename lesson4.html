@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue3.js"></script>
+    <style>
+        .red{color:red}
+        .blue{color:blue}
+    </style>
+</head>
+<body>
+    <div id="leo">
+        <span v-on:[fn]="toRed" v-bind:class="color">123</span>
+        <br/>
+        <span v-bind:[sky]="content"></span> <!--中括号[]内可以放入key值-->
+        <button v-on:click='change'>go!</button>
+        <button v-on:click='toMouseOver'>mouseover</button>
+    </div>
+    <script>
+        Vue.createApp({
+            data:function(){
+                return{
+                    fn:"click",
+                    color:"",
+                    sky:"id",
+                    content:"Vue3"
+                }
+            },
+            methods:{
+                change:function(){
+                    this.sky="class";
+                },
+                toRed:function(){
+                    if(this.color=="red"){
+                        this.color="blue"
+                    }
+                    else{
+                        this.color="red";
+                    }
+                },
+                toMouseOver:function(){
+                    this.fn="mouseover";
+                }
+            }
+        }).mount("#leo");
+    </script>
+</body>
+</html>
